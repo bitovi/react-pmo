@@ -5,7 +5,7 @@ export default React.createContext({
     currentRestaurant: {},
     getRestaurants: (region, city) => {},
     restaurants: {},
-    setCurrentRestaurant: (region, city, slug) => {}
+    setCurrentRestaurant: (region, city, slug, data) => {}
 });
 
 /**
@@ -39,5 +39,5 @@ export default React.createContext({
  * @property {string} currentRestaurant.slug
  * @property {(region: string, city: string) => void} getRestaurants
  * @property {RestaurantRegionData} restaurants
- * @property {(region: string, city: string, slug: string) => void} setCurrentRestaurant
+ * @property {(region: string, city: string, slug: string, restaurant: Object) => void} setCurrentRestaurant
  */

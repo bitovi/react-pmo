@@ -41,6 +41,7 @@ export default function Restaurants () {
 
     function onCityChange(evt) {
         setCity(evt.target.value);
+        
         context.getRestaurants(region, evt.target.value);
     }
 
@@ -53,7 +54,7 @@ export default function Restaurants () {
     function restaurantSelected(slug) {
         const restaurant = restaurants[region][city].find(x => x.slug === slug);
         if (restaurant) {
-            context.setCurrentRestaurant(region, city, restaurant.slug);
+            context.setCurrentRestaurant(region, city, restaurant.slug, restaurant);
         }
     };
 
@@ -83,7 +84,6 @@ export default function Restaurants () {
             );
         })
         : null;
-
     return (
         <div className="restaurants">
             <h2 className="page-header">Restaurants</h2>

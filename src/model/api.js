@@ -29,6 +29,14 @@ async function getStates() {
 }
 
 /**
+ * Get the orders.
+ * @returns {any[]} The orders.
+ */
+async function getOrders() {
+  const { data } = await get("/orders");
+  return data;
+}
+/**
  * Get data from the api and return it.
  * @param {string} url The URL to an api resource.
  * @returns {ApiResult}
@@ -47,7 +55,7 @@ async function get(url) {
     return { data: result.data, response };
 }
 
-export { getCities, getRestaurants, getStates };
+export { getCities, getRestaurants, getStates, getOrders };
 
 /**
  * @typedef ApiResult

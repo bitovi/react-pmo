@@ -21,11 +21,12 @@ export default function App() {
       });
     },
     restaurants: {},
-    setCurrentRestaurant: (region, city, slug) => {
+    setCurrentRestaurant: (region, city, slug, restaurant) => {
       dispatch({
         city,
         region,
         slug,
+        restaurant,
         type: "set-current-restaurant",
       });
     }
@@ -81,14 +82,14 @@ function contextReducer(state, action) {
   switch(action.type) {
 
     case "set-current-restaurant": {
-      const { city, region, slug } = action;
+      const { city, region, slug, restaurant } = action;
       const { currentRestaurant } = state;
       if (
         (city && city !== currentRestaurant.city) ||
         (region && region !== currentRestaurant.region) ||
         (slug && slug !== currentRestaurant.slug)
       ) {
-        nextState = { ...state, ...{ currentRestaurant: { city, region, slug } } };
+        nextState = { ...state, ...{ currentRestaurant: { city, region, slug, restaurant } } };
       }
       break;
     }
