@@ -1,6 +1,0 @@
-{
-    "files.exclude": {
-        ".vscode": true,
-        "db-data": true
-    }
-}
