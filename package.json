@@ -2,13 +2,13 @@
   "name": "react-pmo",
   "version": "0.2.0",
   "private": true,
+  "homepage": "https://bitovi.github.io/react-pmo",
   "scripts": {
+    "eslint": "eslint .",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "test": "react-scripts test",
+    "deploy": "npm run build && gh-pages -d build"
   },
   "browserslist": {
     "production": [
@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "gh-pages": "^2.2.0",
     "place-my-order-assets": "^0.2.0",
     "prop-types": "^15.7.2",
     "qs": "^6.9.1",

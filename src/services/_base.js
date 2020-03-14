@@ -1,6 +1,6 @@
 import qs from 'qs'
 
-export const baseUrl = 'http://www.place-my-order.com/api'
+export const baseUrl = '//www.place-my-order.com/api'
 
 export async function get(path, query) {
   const url = `${baseUrl}${path}${query ? `?${qs.stringify(query)}` : ''}`
