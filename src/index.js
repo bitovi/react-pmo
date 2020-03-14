@@ -1,55 +1,49 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  useParams,
-} from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import 'place-my-order-assets/css/place-my-order-assets.css'
+import './overrides.scss'
+
+import Layout from './components/Layout/Layout'
+
+import Landing from './scenes/Landing/Landing'
+import NotFound from './scenes/NotFound/NotFound'
+import OrderDetails from './scenes/OrderDetails/OrderDetails'
+import OrderForm from './scenes/OrderForm/OrderForm'
+import OrderHistory from './scenes/OrderHistory/OrderHistory'
+import RestaurantDetails from './scenes/RestaurantDetails/RestaurantDetails'
+import RestaurantList from './scenes/RestaurantList/RestaurantList'
 
 ReactDOM.render((
   <BrowserRouter>
-    <Switch>
-      <Route path="/" exact>
-        <Dummy page="home" />
-      </Route>
+    <Layout>
+      <Switch>
+        <Route path="/" exact>
+          <Landing />
+        </Route>
 
-      <Route path="/restaurants/:restaurant/order">
-        <Dummy page="restaurant order form" />
-      </Route>
-      <Route path="/restaurants/:restaurant">
-        <Dummy page="restaurant details" />
-      </Route>
-      <Route path="/restaurants">
-        <Dummy page="restaurant list" />
-      </Route>
+        <Route path="/restaurants/:restaurantId/order">
+          <OrderForm />
+        </Route>
+        <Route path="/restaurants/:restaurantId">
+          <RestaurantDetails />
+        </Route>
+        <Route path="/restaurants">
+          <RestaurantList />
+        </Route>
 
-      <Route path="/order-history/:order">
-        <Dummy page="order details" />
-      </Route>
-      <Route path="/order-history">
-        <Dummy page="order history" />
-      </Route>
+        <Route path="/order-history/:orderId">
+          <OrderDetails />
+        </Route>
+        <Route path="/order-history">
+          <OrderHistory />
+        </Route>
 
-      <Route>
-        <Dummy page="error" />
-      </Route>
-    </Switch>
+        <Route>
+          <NotFound />
+        </Route>
+      </Switch>
+    </Layout>
   </BrowserRouter>
 ), document.getElementById('root'))
-
-function Dummy({ ...props }) {
-  const params = useParams()
-
-  return (
-    <div>
-      <pre>
-        {JSON.stringify(props, null, 2)}
-        {'\n'}
-        {JSON.stringify(params, null, 2)}
-      </pre>
-    </div>
-  )
-}

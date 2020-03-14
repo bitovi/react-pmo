@@ -1,0 +1,39 @@
+body {
+  font-family: "Helvetica Neue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+  font-weight: 300;
+}
+
+.order-history .order address div {
+  float: none;
+  padding: 0;
+}
+
+button.link {
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  cursor: pointer;
+
+  color: #337ab7;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: #23527c;
+    text-decoration: underline;
+  }
+
+  &:active, &:hover {
+      outline: 0;
+  }
+
+  &:focus {
+    outline: thin dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+  }
+
+}
+
+.actions p {
+  font-weight: 700;
+}
