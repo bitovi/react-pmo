@@ -1,4 +1,4 @@
-import { get } from './_base'
+import { get, post } from './_base'
 
 export async function getOrders() {
   const orders = await get('/orders')
@@ -12,10 +12,27 @@ export async function getOrder(id) {
   return prepareOrder(order)
 }
 
+export async function createOrder(data) {
+  const order = await post('/orders', null, data)
+
+  return prepareOrder(order)
+}
+
 function prepareOrder({ address, ...order }) {
   if (address) {
-    order.address = {
-      street: address,
+    const match = address.match(/(.+), (.+) ([A-Z]{2}) ([0-9]{5}(:?-[0-9]{4})?)/)
+    if (match) {
+      const [ , street, city, state, zip ] = match
+      order.address = {
+        street,
+        city,
+        state,
+        zip,
+      }
+    } else {
+      order.address = {
+        street: address,
+      }
     }
   }
 

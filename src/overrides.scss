@@ -37,3 +37,41 @@ button.link {
 .actions p {
   font-weight: 700;
 }
+
+.order-details {
+  width: 100%;
+  max-width: 768px;
+  margin: 0 auto;
+  width: 480px;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 0 15px;
+  }
+
+  .subheader {
+    font-weight: bold;
+  }
+
+  address {
+    font-weight: bold;
+  }
+
+  .list-group-item:last-child {
+    font-weight: bold;
+  }
+}
+
+.order-form {
+  label {
+    display: block;
+
+    input[type=checkbox] {
+      margin-right: 0.5em;
+    }
+  }
+}
+
+.nav-tabs-container > :nth-child(n+2) {
+  margin-top: 20px;
+}

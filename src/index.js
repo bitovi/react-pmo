@@ -16,7 +16,7 @@ import RestaurantDetails from './scenes/RestaurantDetails/RestaurantDetails'
 import RestaurantList from './scenes/RestaurantList/RestaurantList'
 
 ReactDOM.render((
-  <BrowserRouter>
+  <BrowserRouter basename={process.env.PUBLIC_URL}>
     <Layout>
       <Switch>
         <Route path="/" exact>
