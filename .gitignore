@@ -1,0 +1,15 @@
+# environment
+.env
+.env.*
+
+# artifacts
+node_modules
+dist
+coverage
+
+# misc
+.vscode
+.DS_Store
+Thumbs.db
+*.tsbuildinfo
+npm-debug.log*
