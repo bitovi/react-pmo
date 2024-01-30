@@ -1,9 +1,9 @@
 export interface Order {
   _id: string
+  status: "new" | "preparing" | "delivery" | "delivered"
   name: string
   address: string
   phone: string
-  status: string
   items: OrderItem[]
 }
 
