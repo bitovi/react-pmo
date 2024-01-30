@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         element: <OrderHistory />,
       },
       {
-        path: "orders/:orderId",
+        path: "orders/:id",
         element: <OrderDetails />,
       },
       {
@@ -40,11 +40,11 @@ const router = createBrowserRouter([
         element: <RestaurantList />,
       },
       {
-        path: "restaurants/:restaurantSlug",
+        path: "restaurants/:slug",
         element: <RestaurantDetails />,
       },
       {
-        path: "restaurants/:restaurantSlug/order",
+        path: "restaurants/:slug/order",
         element: <RestaurantOrder />,
       },
       {

@@ -3,9 +3,9 @@ import { Link, useParams } from "react-router-dom"
 import { useRestaurant } from "./hooks"
 
 const RestaurantDetails: React.FC = () => {
-  const params = useParams() as { restaurantSlug: string }
+  const params = useParams() as { slug: string }
 
-  const restaurant = useRestaurant(params.restaurantSlug)
+  const restaurant = useRestaurant(params.slug)
 
   if (restaurant.pending) {
     return <div className="loading"></div>
