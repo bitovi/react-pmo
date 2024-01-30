@@ -12,14 +12,14 @@ const Layout: React.FC = () => {
           <Link to="/restaurants">Restaurants</Link>
         </li>
         <li>
-          <Link to="/order-history">Order History</Link>
+          <Link to="/orders">Orders</Link>
         </li>
         <li>---</li>
         <li>
-          <Link to="/restaurants/foo">Restaurant Details</Link>
+          <Link to="/restaurants/crab-shack">Restaurant Details</Link>
         </li>
         <li>
-          <Link to="/restaurants/foo/1">Order Details</Link>
+          <Link to="/orders/O1TKTFJkTP3Y3WLe">Order Details</Link>
         </li>
       </ul>
       <Outlet />

@@ -1,12 +1,12 @@
 import type { City, Restaurant, State } from "./interfaces"
 
-import { pmoApi } from "../api"
+import { pmo } from "../api"
 
 export async function getRestaurants(
   state?: string,
   city?: string,
 ): Promise<Restaurant[]> {
-  const { data } = await pmoApi<
+  const { data } = await pmo<
     { data: Restaurant[] },
     {
       "filter[address.state]"?: string
@@ -25,7 +25,7 @@ export async function getRestaurants(
 }
 
 export async function getRestaurant(slug: string): Promise<Restaurant> {
-  const data = await pmoApi<Restaurant>({
+  const data = await pmo<Restaurant>({
     method: "GET",
     path: `/restaurants/${slug}`,
   })
@@ -34,7 +34,7 @@ export async function getRestaurant(slug: string): Promise<Restaurant> {
 }
 
 export async function getStates(): Promise<State[]> {
-  const { data } = await pmoApi<{ data: State[] }>({
+  const { data } = await pmo<{ data: State[] }>({
     method: "GET",
     path: "/states",
   })
@@ -43,7 +43,7 @@ export async function getStates(): Promise<State[]> {
 }
 
 export async function getCities(state: string): Promise<City[]> {
-  const { data } = await pmoApi<{ data: City[] }, { state: string }>({
+  const { data } = await pmo<{ data: City[] }, { state: string }>({
     method: "GET",
     path: "/cities",
     params: {

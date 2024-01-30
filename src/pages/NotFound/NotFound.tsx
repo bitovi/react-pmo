@@ -1,17 +1,21 @@
 import type { RouteError } from "./interfaces"
 
-import { useRouteError } from "react-router-dom"
+import { Link, useRouteError } from "react-router-dom"
 
 const NotFound: React.FC = () => {
   const error = useRouteError() as RouteError
   console.error(error)
 
   return (
-    <div>
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
+    <div className="errorpage" style={{ margin: "auto" }}>
+      <h1>Error</h1>
+
+      <p>{error.statusText}</p>
+
       <p>
-        <i>{error.statusText}</i>
+        <Link className="btn" to="/" role="button">
+          Go Home
+        </Link>
       </p>
     </div>
   )

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 
-import { getOrder } from "@shared/services/api"
+import { getOrder } from "@shared/services/pmo"
 
 const OrderDetails: React.FC = () => {
   const params = useParams() as { orderId: string }

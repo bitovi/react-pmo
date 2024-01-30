@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-import { getOrders } from "@shared/services/api"
+import { getOrders } from "@shared/services/pmo"
 
 const OrderHistory: React.FC = () => {
   const orders = []

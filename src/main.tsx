@@ -1,7 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom/client"
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, redirect, RouterProvider } from "react-router-dom"
 
 import Layout from "./Layout"
 import Home from "./pages/Home"
@@ -10,6 +10,7 @@ import OrderDetails from "./pages/OrderDetails"
 import OrderHistory from "./pages/OrderHistory"
 import RestaurantDetails from "./pages/RestaurantDetails"
 import RestaurantList from "./pages/RestaurantList"
+import RestaurantOrder from "./pages/RestaurantOrder"
 
 const element = document.getElementById("root")
 if (!element) {
@@ -27,6 +28,14 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
+        path: "orders",
+        element: <OrderHistory />,
+      },
+      {
+        path: "orders/:orderId",
+        element: <OrderDetails />,
+      },
+      {
         path: "restaurants",
         element: <RestaurantList />,
       },
@@ -35,12 +44,12 @@ const router = createBrowserRouter([
         element: <RestaurantDetails />,
       },
       {
-        path: "restaurants/:restaurantSlug/:orderId",
-        element: <OrderDetails />,
+        path: "restaurants/:restaurantSlug/order",
+        element: <RestaurantOrder />,
       },
       {
         path: "order-history",
-        element: <OrderHistory />,
+        loader: () => redirect("/orders"),
       },
     ],
   },

@@ -1,6 +1,6 @@
 const VITE_PMO_API = import.meta.env.VITE_PMO_API
 
-export async function pmoApi<Data = never, Params = unknown, Body = never>({
+export async function pmo<Data = never, Params = unknown, Body = never>({
   method,
   path,
   params,
