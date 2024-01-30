@@ -7,47 +7,23 @@ export type PromiseState<Data> =
 interface SuccessState<Data> {
   pending: false
   data: Data
-  error: undefined
+  error?: undefined
 }
 
 interface ErrorState {
   pending: false
-  data: undefined
+  data?: undefined
   error: string
 }
 
 interface PendingState {
   pending: true
-  data: undefined
-  error: undefined
+  data?: undefined
+  error?: undefined
 }
 
 interface InitialState {
   pending: false
-  data: undefined
-  error: undefined
-}
-
-export type PromiseAction<Data> =
-  | SuccessAction<Data>
-  | ErrorAction
-  | RequestAction
-  | ResetAction
-
-interface SuccessAction<Data> {
-  type: "success"
-  data: Data
-}
-
-interface ErrorAction {
-  type: "error"
-  error: string
-}
-
-interface RequestAction {
-  type: "request"
-}
-
-interface ResetAction {
-  type: "reset"
+  data?: undefined
+  error?: undefined
 }

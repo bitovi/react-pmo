@@ -3,7 +3,7 @@ import type { Restaurant } from "@shared/services/pmo"
 
 import { useEffect } from "react"
 
-import usePromise from "@shared/hooks/usePromise/usePromise"
+import usePromise from "@shared/hooks/usePromise"
 import { getRestaurant } from "@shared/services/pmo"
 
 export function useRestaurant(slug: string): PromiseState<Restaurant> {

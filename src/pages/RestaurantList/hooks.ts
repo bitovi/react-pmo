@@ -3,7 +3,7 @@ import type { City, Restaurant, State } from "@shared/services/pmo"
 
 import { useEffect } from "react"
 
-import usePromise from "@shared/hooks/usePromise/usePromise"
+import usePromise from "@shared/hooks/usePromise"
 import { getCities, getRestaurants, getStates } from "@shared/services/pmo"
 
 export function useRestaurants(
