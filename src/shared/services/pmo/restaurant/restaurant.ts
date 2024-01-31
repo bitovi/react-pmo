@@ -67,5 +67,12 @@ function cleanupRestaurant(restaurant: Restaurant): Restaurant {
     restaurant.images.banner = `https://www.place-my-order.com/${restaurant.images.banner}`
   }
 
+  for (const item of restaurant.menu.lunch) {
+    item._id = item.name
+  }
+  for (const item of restaurant.menu.dinner) {
+    item._id = item.name
+  }
+
   return restaurant
 }

@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet } from "react-router-dom"
+import { NavLink, Outlet } from "react-router-dom"
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import "place-my-order-assets/css/place-my-order-assets.css"
