@@ -48,19 +48,27 @@ const OrderList: React.FC<{
             <div className="actions">
               <span className="badge">{titles[status]}</span>
 
-              <p className="action">
-                Mark as:
-                <button onClick={() => console.log("next", _id, nextStatus)}>
-                  [Next]
-                </button>
-              </p>
+              {nextStatus && (
+                <p className="action">
+                  Mark as:{" "}
+                  <button
+                    className="link"
+                    onClick={() => console.log("next", _id, nextStatus)}
+                  >
+                    {titles[nextStatus]}
+                  </button>
+                </p>
+              )}
 
               <p className="action">
                 <Link to={`/orders/${_id}`}>View Details</Link>
               </p>
 
               <p className="action">
-                <button onClick={() => console.log("delete", _id)}>
+                <button
+                  className="link"
+                  onClick={() => console.log("delete", _id)}
+                >
                   Delete
                 </button>
               </p>

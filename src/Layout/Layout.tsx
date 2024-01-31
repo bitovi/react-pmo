@@ -1,29 +1,31 @@
-import { Link, Outlet } from "react-router-dom"
+import { Link, NavLink, Outlet } from "react-router-dom"
+
+import "bootstrap/dist/css/bootstrap.min.css"
+import "place-my-order-assets/css/place-my-order-assets.css"
+import "./styles.css"
 
 const Layout: React.FC = () => {
   return (
-    <div>
-      <p>PMO</p>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/restaurants">Restaurants</Link>
-        </li>
-        <li>
-          <Link to="/orders">Orders</Link>
-        </li>
-        <li>---</li>
-        <li>
-          <Link to="/restaurants/crab-shack">Restaurant Details</Link>
-        </li>
-        <li>
-          <Link to="/orders/O1TKTFJkTP3Y3WLe">Order Details</Link>
-        </li>
-      </ul>
+    <>
+      <header>
+        <nav>
+          <h1>place-my-order.com</h1>
+          <ul>
+            <li>
+              <NavLink to="/">Home</NavLink>
+            </li>
+            <li>
+              <NavLink to="/restaurants">Restaurants</NavLink>
+            </li>
+            <li>
+              <NavLink to="/orders">Order History</NavLink>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
       <Outlet />
-    </div>
+    </>
   )
 }
 

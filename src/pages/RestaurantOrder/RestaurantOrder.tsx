@@ -1,12 +1,23 @@
 import { useParams } from "react-router-dom"
 
+import { useRestaurant } from "./hooks"
+
 const RestaurantOrder: React.FC = () => {
   const params = useParams() as { slug: string }
-  console.log(params)
+
+  const restaurant = useRestaurant(params.slug)
+
+  if (restaurant.pending) {
+    return <div className="loading"></div>
+  }
+
+  if (restaurant.error || !restaurant.data) {
+    return <div className="error">Error</div>
+  }
 
   return (
-    <div>
-      <h1>Order Form!</h1>
+    <div className="order-form">
+      <h1>Order from {restaurant.data.name}!</h1>
     </div>
   )
 }

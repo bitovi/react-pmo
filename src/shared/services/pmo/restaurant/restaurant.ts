@@ -21,7 +21,7 @@ export async function getRestaurants(
     },
   })
 
-  return data
+  return data.map(cleanupRestaurant)
 }
 
 export async function getRestaurant(slug: string): Promise<Restaurant> {
@@ -30,7 +30,7 @@ export async function getRestaurant(slug: string): Promise<Restaurant> {
     path: `/restaurants/${slug}`,
   })
 
-  return data
+  return cleanupRestaurant(data)
 }
 
 export async function getStates(): Promise<State[]> {
@@ -52,4 +52,20 @@ export async function getCities(state: string): Promise<City[]> {
   })
 
   return data
+}
+
+function cleanupRestaurant(restaurant: Restaurant): Restaurant {
+  if (restaurant.images.thumbnail) {
+    restaurant.images.thumbnail = `https://www.place-my-order.com/${restaurant.images.thumbnail}`
+  }
+
+  if (restaurant.images.owner) {
+    restaurant.images.owner = `https://www.place-my-order.com/${restaurant.images.owner}`
+  }
+
+  if (restaurant.images.banner) {
+    restaurant.images.banner = `https://www.place-my-order.com/${restaurant.images.banner}`
+  }
+
+  return restaurant
 }

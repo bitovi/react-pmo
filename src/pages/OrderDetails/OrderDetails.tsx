@@ -15,7 +15,7 @@ const OrderDetails: React.FC = () => {
   }
 
   return (
-    <>
+    <div className="order-form">
       <h3>Thanks for your order, {order.data.name}!</h3>
       <div>
         <label className="control-label">
@@ -46,7 +46,7 @@ const OrderDetails: React.FC = () => {
       <div>
         <label className="control-label">Address: {order.data.address}</label>
       </div>
-    </>
+    </div>
   )
 }
 

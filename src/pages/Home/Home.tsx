@@ -4,7 +4,7 @@ const Home: React.FC = () => {
   return (
     <div className="homepage" style={{ margin: "auto" }}>
       <img
-        src="./assets/images/homepage-hero.jpg"
+        src="https://www.place-my-order.com/node_modules/place-my-order-assets/images/homepage-hero.jpg"
         alt="Restaurant table with glasses."
         width="250"
         height="380"
