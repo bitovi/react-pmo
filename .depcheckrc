@@ -1,5 +1,9 @@
 ignore-dirs:
   - /dist
 ignores:
+  - "@shared/*"
   - "@types/*"
   - "@vitest/*"
+
+  # temp
+  - "@testing-library/*"

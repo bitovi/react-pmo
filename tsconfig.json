@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@shared/*": ["src/shared/*"],
+    },
+
     "module": "ESNext",
     "moduleResolution": "bundler",
     "target": "ES2020",
