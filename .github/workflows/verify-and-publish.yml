@@ -30,6 +30,8 @@ jobs:
 
       - name: Build
         run: npm run build -- --base=/${{ github.event.repository.name }}
+      - name: Adjust buildh for GitHub Pages
+        run: cp dist/index.html dist/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
