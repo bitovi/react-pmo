@@ -17,43 +17,48 @@ if (!element) {
   throw new Error("Missing element #root")
 }
 
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Layout />,
+      errorElement: <NotFound />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "orders",
+          element: <OrderHistory />,
+        },
+        {
+          path: "orders/:id",
+          element: <OrderDetails />,
+        },
+        {
+          path: "restaurants",
+          element: <RestaurantList />,
+        },
+        {
+          path: "restaurants/:slug",
+          element: <RestaurantDetails />,
+        },
+        {
+          path: "restaurants/:slug/order",
+          element: <RestaurantOrder />,
+        },
+        {
+          path: "order-history",
+          loader: () => redirect("/orders"),
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Layout />,
-    errorElement: <NotFound />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "orders",
-        element: <OrderHistory />,
-      },
-      {
-        path: "orders/:id",
-        element: <OrderDetails />,
-      },
-      {
-        path: "restaurants",
-        element: <RestaurantList />,
-      },
-      {
-        path: "restaurants/:slug",
-        element: <RestaurantDetails />,
-      },
-      {
-        path: "restaurants/:slug/order",
-        element: <RestaurantOrder />,
-      },
-      {
-        path: "order-history",
-        loader: () => redirect("/orders"),
-      },
-    ],
+    basename: import.meta.env.BASE_URL,
   },
-])
+)
 
 ReactDOM.createRoot(element).render(
   <React.StrictMode>

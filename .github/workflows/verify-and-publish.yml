@@ -7,6 +7,7 @@ on:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    environment: github-pages
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -29,7 +30,11 @@ jobs:
         run: npm run depcheck
 
       - name: Build
+        env:
+          VITE_PMO_API: ${{ vars.PMO_API }}
         run: npm run build -- --base=/${{ github.event.repository.name }}
+      - name: Adjust build for GitHub Pages
+        run: cp dist/index.html dist/404.html
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
