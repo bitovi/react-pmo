@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom"
 
-import { useRestaurant } from "./hooks"
+import RestaurantHeader from "@shared/components/RestaurantHeader"
+import { useRestaurant } from "@shared/services/pmo"
 
 const RestaurantDetails: React.FC = () => {
   const params = useParams() as { slug: string }
@@ -17,32 +18,7 @@ const RestaurantDetails: React.FC = () => {
 
   return (
     <>
-      <div
-        className="restaurant-header"
-        style={{ backgroundImage: `url(${restaurant.data.images.banner})` }}
-      >
-        <div className="background">
-          <h2>{restaurant.data.name}</h2>
-
-          {restaurant.data.address && (
-            <div className="address">
-              {restaurant.data.address.street}
-              <br />
-              {restaurant.data.address.city}, {restaurant.data.address.state}{" "}
-              {restaurant.data.address.zip}
-            </div>
-          )}
-
-          <div className="hours-price">
-            $$$
-            <br />
-            Hours: M-F 10am-11pm
-            <span className="open-now">Open Now</span>
-          </div>
-
-          <br />
-        </div>
-      </div>
+      <RestaurantHeader restaurant={restaurant.data} />
 
       <div className="restaurant-content">
         <h3>The best food this side of the Mississippi</h3>

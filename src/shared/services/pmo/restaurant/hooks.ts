@@ -1,10 +1,29 @@
-import type { PromiseState } from "@shared/hooks/usePromise"
+import type { PromiseState } from "@shared/helpers/usePromise"
 import type { City, Restaurant, State } from "@shared/services/pmo"
 
 import { useEffect } from "react"
 
-import usePromise from "@shared/hooks/usePromise"
-import { getCities, getRestaurants, getStates } from "@shared/services/pmo"
+import usePromise from "@shared/helpers/usePromise"
+import {
+  getCities,
+  getRestaurant,
+  getRestaurants,
+  getStates,
+} from "@shared/services/pmo"
+
+export function useRestaurant(slug?: string): PromiseState<Restaurant> {
+  const [promiseState, update] = usePromise<Restaurant>()
+
+  useEffect(() => {
+    if (slug) {
+      update(getRestaurant(slug))
+    } else {
+      update(undefined)
+    }
+  }, [update, slug])
+
+  return promiseState
+}
 
 export function useRestaurants(
   state: string,

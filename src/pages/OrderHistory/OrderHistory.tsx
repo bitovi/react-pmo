@@ -1,5 +1,6 @@
-import { useOrders } from "./hooks"
-import OrderList from "./OrderList/OrderList"
+import { useOrders } from "@shared/services/pmo"
+
+import OrderList from "./OrderList"
 
 const OrderHistory: React.FC = () => {
   const orders = useOrders()

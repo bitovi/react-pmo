@@ -2,6 +2,15 @@ import type { City, Restaurant, State } from "./interfaces"
 
 import { pmo } from "../api"
 
+export async function getRestaurant(slug: string): Promise<Restaurant> {
+  const data = await pmo<Restaurant>({
+    method: "GET",
+    path: `/restaurants/${slug}`,
+  })
+
+  return cleanupRestaurant(data)
+}
+
 export async function getRestaurants(
   state?: string,
   city?: string,
@@ -22,15 +31,6 @@ export async function getRestaurants(
   })
 
   return data.map(cleanupRestaurant)
-}
-
-export async function getRestaurant(slug: string): Promise<Restaurant> {
-  const data = await pmo<Restaurant>({
-    method: "GET",
-    path: `/restaurants/${slug}`,
-  })
-
-  return cleanupRestaurant(data)
 }
 
 export async function getStates(): Promise<State[]> {

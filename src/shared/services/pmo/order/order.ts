@@ -16,19 +16,19 @@ export const titles: Record<Order["status"], string> = {
   delivered: "Delivered",
 }
 
-export async function getOrders(): Promise<Order[]> {
-  const { data } = await pmo<{ data: Order[] }>({
+export async function getOrder(id: string): Promise<Order> {
+  const data = await pmo<Order>({
     method: "GET",
-    path: "/orders",
+    path: `/orders/${id}`,
   })
 
   return data
 }
 
-export async function getOrder(id: string): Promise<Order> {
-  const data = await pmo<Order>({
+export async function getOrders(): Promise<Order[]> {
+  const { data } = await pmo<{ data: Order[] }>({
     method: "GET",
-    path: `/orders/${id}`,
+    path: "/orders",
   })
 
   return data
