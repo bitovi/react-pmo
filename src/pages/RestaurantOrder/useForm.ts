@@ -4,7 +4,7 @@ import { useCallback, useState } from "react"
 
 // import usePromise from "@shared/hooks/usePromise"
 
-type NewOrder = Omit<Order, "_id" | "status" | "items"> & {
+type NewOrder = Omit<Order, "_id" | "status" | "items" | "restaurant"> & {
   items: Record<string, boolean>
 }
 

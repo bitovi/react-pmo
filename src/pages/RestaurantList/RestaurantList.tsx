@@ -1,12 +1,10 @@
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
-import { useCities, useRestaurants, useStates } from "./hooks"
-import { useId, useState } from "react"
+import FormSelect from "@shared/components/FormSelect"
+import { useCities, useRestaurants, useStates } from "@shared/services/pmo"
 
 const RestaurantList: React.FC = () => {
-  const stateId = useId()
-  const cityId = useId()
-
   const [state, setState] = useState("")
   const [city, setCity] = useState("")
 
@@ -19,55 +17,51 @@ const RestaurantList: React.FC = () => {
       <div className="restaurants">
         <h2 className="page-header">Restaurants</h2>
         <form className="form">
-          <div className="form-group">
-            <label htmlFor={stateId}>State</label>
-            <select
-              id={stateId}
-              className="formControl"
-              onChange={(e) => setState(e.target.value)}
-              disabled={!states.pending && !states.data}
-            >
-              {states.pending ? (
-                <option value="">Loading...</option>
-              ) : states.error ? (
-                <option value="">Error</option>
-              ) : states.data ? (
-                <>
-                  <option value="">Choose a state</option>
-                  {states.data.map(({ short, name }) => (
-                    <option key={short} value={short}>
-                      {name}
-                    </option>
-                  ))}
-                </>
-              ) : undefined}
-            </select>
-          </div>
+          <FormSelect
+            label="State"
+            disabled={!states.pending && !states.data}
+            value={state}
+            onChange={(state) => setState(state)}
+            options={
+              states.pending
+                ? [{ value: "", label: "Loading..." }]
+                : states.error
+                  ? [{ value: "", label: "Error" }]
+                  : states.data
+                    ? [
+                        { value: "", label: "Choose a state" },
+                        ...states.data.map(({ short, name }) => ({
+                          key: short,
+                          value: short,
+                          label: name,
+                        })),
+                      ]
+                    : []
+            }
+          />
 
-          <div className="form-group">
-            <label htmlFor={cityId}>City</label>
-            <select
-              id={cityId}
-              className="formControl"
-              onChange={(e) => setCity(e.target.value)}
-              disabled={!cities.pending && !cities.data}
-            >
-              {cities.pending ? (
-                <option value="">Loading...</option>
-              ) : cities.error ? (
-                <option value="">Error</option>
-              ) : cities.data ? (
-                <>
-                  <option value="">Choose a city</option>
-                  {cities.data.map(({ name }) => (
-                    <option key={name} value={name}>
-                      {name}
-                    </option>
-                  ))}
-                </>
-              ) : undefined}
-            </select>
-          </div>
+          <FormSelect
+            label="City"
+            disabled={!cities.pending && !cities.data}
+            value={city}
+            onChange={(city) => setCity(city)}
+            options={
+              cities.pending
+                ? [{ value: "", label: "Loading..." }]
+                : cities.error
+                  ? [{ value: "", label: "Error" }]
+                  : cities.data
+                    ? [
+                        { value: "", label: "Choose a city" },
+                        ...cities.data.map(({ name }) => ({
+                          key: name,
+                          value: name,
+                          label: name,
+                        })),
+                      ]
+                    : []
+            }
+          />
         </form>
 
         {restaurants.pending ? (

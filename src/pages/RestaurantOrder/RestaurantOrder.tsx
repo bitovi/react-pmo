@@ -1,7 +1,9 @@
 import { useParams } from "react-router-dom"
 
-import FormField from "./FormField"
-import { useRestaurant } from "./hooks"
+import FormTextField from "@shared/components/FormTextField"
+import RestaurantHeader from "@shared/components/RestaurantHeader"
+import { useRestaurant } from "@shared/services/pmo"
+
 import useForm from "./useForm"
 
 const RestaurantOrder: React.FC = () => {
@@ -20,78 +22,85 @@ const RestaurantOrder: React.FC = () => {
   }
 
   return (
-    <div className="order-form">
-      <h3>Order from {restaurant.data.name}!</h3>
+    <>
+      <RestaurantHeader restaurant={restaurant.data} />
 
-      <form onSubmit={() => actions.submit()}>
-        <h4>Lunch Menu</h4>
-        <ul className="list-group">
-          {restaurant.data.menu.lunch.map(({ _id, name, price }) => (
-            <li key={_id} className="list-group-item">
-              <label>
-                <input
-                  type="checkbox"
-                  onChange={(e) => actions.setItem(_id, e.target.checked)}
-                  checked={order.items[_id] ?? false}
-                />{" "}
-                {name} <span className="badge">{price}</span>
-              </label>
-            </li>
-          ))}
-        </ul>
+      <div className="order-form">
+        <h3>Order from {restaurant.data.name}!</h3>
 
-        <h4>Dinner menu</h4>
-        <ul className="list-group">
-          {restaurant.data.menu.dinner.map(({ _id, name, price }) => (
-            <li key={_id} className="list-group-item">
-              <label>
-                <input
-                  type="checkbox"
-                  onChange={(e) => actions.setItem(_id, e.target.checked)}
-                  checked={order.items[_id] ?? false}
-                />{" "}
-                {name} <span className="badge">{price}</span>
-              </label>
-            </li>
-          ))}
-        </ul>
+        <form onSubmit={() => actions.submit()}>
+          <h4>Lunch Menu</h4>
+          <ul className="list-group">
+            {restaurant.data.menu.lunch.map(({ _id, name, price }) => (
+              <li key={_id} className="list-group-item">
+                <label>
+                  <input
+                    type="checkbox"
+                    onChange={(e) => actions.setItem(_id, e.target.checked)}
+                    checked={order.items[_id] ?? false}
+                  />{" "}
+                  {name} <span className="badge">{price}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
 
-        {order.isEmpty && (
-          <p className="info text-error">Please choose an item</p>
-        )}
+          <h4>Dinner menu</h4>
+          <ul className="list-group">
+            {restaurant.data.menu.dinner.map(({ _id, name, price }) => (
+              <li key={_id} className="list-group-item">
+                <label>
+                  <input
+                    type="checkbox"
+                    onChange={(e) => actions.setItem(_id, e.target.checked)}
+                    checked={order.items[_id] ?? false}
+                  />{" "}
+                  {name} <span className="badge">{price}</span>
+                </label>
+              </li>
+            ))}
+          </ul>
 
-        <FormField
-          label="Name"
-          type="text"
-          help="Please enter your name."
-          error={false}
-        />
-        <FormField
-          label="Address"
-          type="text"
-          help="Please enter your address."
-          error={false}
-        />
-        <FormField
-          label="Phone"
-          type="tel"
-          help="Please enter your phone number."
-          error={false}
-        />
-
-        <div className="submit">
-          <h4>Total: {order.subtotal}</h4>
-
-          {order.isPending ? (
-            <div className="loading"></div>
-          ) : (
-            <button type="submit" className="btn" disabled={order.isValid}>
-              Place My Order!
-            </button>
+          {order.isEmpty && (
+            <p className="info text-error">Please choose an item</p>
           )}
-        </div>
-      </form>
-    </div>
+
+          <FormTextField
+            label="Name"
+            type="text"
+            help="Please enter your name."
+            value={order.name}
+            onChange={(name) => actions.setValue("name", name)}
+          />
+          <FormTextField
+            label="Address"
+            type="text"
+            help="Please enter your address."
+            value={order.address}
+            onChange={(address) => actions.setValue("address", address)}
+          />
+          <FormTextField
+            label="Phone"
+            type="tel"
+            help="Please enter your phone number."
+            value={order.phone}
+            onChange={(phone) => actions.setValue("phone", phone)}
+          />
+
+          <div className="submit">
+            <h4>Total: {order.subtotal}</h4>
+
+            {order.isPending ? (
+              <div className="loading"></div>
+            ) : (
+              <button type="submit" className="btn" disabled={order.isValid}>
+                Place My Order!
+              </button>
+            )}
+          </div>
+        </form>
+      </div>
+    </>
   )
 }
 
