@@ -5,12 +5,11 @@ import { useCallback, useState } from "react"
 // import usePromise from "@shared/hooks/usePromise"
 
 type NewOrder = Omit<Order, "_id" | "status" | "items" | "restaurant"> & {
-  items: Record<string, boolean>
+  items: string[]
 }
 
 type NewOrderForm = NewOrder & {
   subtotal: number
-  isEmpty: boolean
   isValid: boolean
   isPending: boolean
 }
@@ -18,11 +17,10 @@ type NewOrderForm = NewOrder & {
 export default function useForm(): [
   NewOrderForm,
   {
-    setValue: (
-      key: keyof Omit<NewOrder, "items">,
-      value: NewOrder[typeof key],
-    ) => void
-    setItem: (itemId: string, value: boolean) => void
+    setName: (value: string) => void
+    setAddress: (value: string) => void
+    setPhone: (value: string) => void
+    updateItem: (itemId: string, value: boolean) => void
     submit: () => void
   },
 ] {
@@ -30,23 +28,37 @@ export default function useForm(): [
     name: "",
     address: "",
     phone: "",
-    items: {},
+    items: [],
   })
 
   // const [promiseState, update] = usePromise<boolean>()
 
-  const setValue = useCallback(
-    (key: string, value: string) =>
-      setOrder((order) => ({ ...order, [key]: value })),
+  const setName = useCallback(
+    (name: string) => setOrder((order) => ({ ...order, name })),
+    [],
+  )
+  const setAddress = useCallback(
+    (address: string) => setOrder((order) => ({ ...order, address })),
+    [],
+  )
+  const setPhone = useCallback(
+    (phone: string) => setOrder((order) => ({ ...order, phone })),
     [],
   )
 
-  const setItem = useCallback(
+  const updateItem = useCallback(
     (itemId: string, value: boolean) =>
       setOrder((order) => {
+        const items = new Set(order.items)
+        if (value) {
+          items.add(itemId)
+        } else {
+          items.delete(itemId)
+        }
+
         return {
           ...order,
-          items: { ...order.items, [itemId]: value },
+          items: [...items],
         }
       }),
     [],
@@ -56,14 +68,18 @@ export default function useForm(): [
     //
   }, [])
 
+  const isValid =
+    order.name && order.address && order.phone && order.items.length > 0
+      ? true
+      : false
+
   return [
     {
       ...order,
       subtotal: 0,
-      isEmpty: true,
-      isValid: true,
+      isValid,
       isPending: false,
     },
-    { setValue, setItem, submit },
+    { setName, setAddress, setPhone, updateItem, submit },
   ]
 }

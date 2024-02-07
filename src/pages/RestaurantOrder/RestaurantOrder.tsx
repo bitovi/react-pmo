@@ -36,8 +36,8 @@ const RestaurantOrder: React.FC = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => actions.setItem(_id, e.target.checked)}
-                    checked={order.items[_id] ?? false}
+                    onChange={(e) => actions.updateItem(_id, e.target.checked)}
+                    checked={order.items.includes(_id)}
                   />{" "}
                   {name} <span className="badge">{price}</span>
                 </label>
@@ -52,8 +52,8 @@ const RestaurantOrder: React.FC = () => {
                 <label>
                   <input
                     type="checkbox"
-                    onChange={(e) => actions.setItem(_id, e.target.checked)}
-                    checked={order.items[_id] ?? false}
+                    onChange={(e) => actions.updateItem(_id, e.target.checked)}
+                    checked={order.items.includes(_id)}
                   />{" "}
                   {name} <span className="badge">{price}</span>
                 </label>
@@ -61,7 +61,7 @@ const RestaurantOrder: React.FC = () => {
             ))}
           </ul>
 
-          {order.isEmpty && (
+          {order.items.length === 0 && (
             <p className="info text-error">Please choose an item</p>
           )}
 
@@ -70,21 +70,21 @@ const RestaurantOrder: React.FC = () => {
             type="text"
             help="Please enter your name."
             value={order.name}
-            onChange={(name) => actions.setValue("name", name)}
+            onChange={(name) => actions.setName(name)}
           />
           <FormTextField
             label="Address"
             type="text"
             help="Please enter your address."
             value={order.address}
-            onChange={(address) => actions.setValue("address", address)}
+            onChange={(address) => actions.setAddress(address)}
           />
           <FormTextField
             label="Phone"
             type="tel"
             help="Please enter your phone number."
             value={order.phone}
-            onChange={(phone) => actions.setValue("phone", phone)}
+            onChange={(phone) => actions.setPhone(phone)}
           />
 
           <div className="submit">
