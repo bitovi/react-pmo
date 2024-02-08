@@ -1,6 +1,6 @@
 import { useId } from "react"
 
-const FormTextField: React.FC<{
+const FormSelect: React.FC<{
   label: string
   help?: string
   disabled?: boolean
@@ -35,4 +35,4 @@ const FormTextField: React.FC<{
   )
 }
 
-export default FormTextField
+export default FormSelect
