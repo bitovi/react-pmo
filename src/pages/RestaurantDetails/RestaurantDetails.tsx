@@ -24,7 +24,7 @@ const RestaurantDetails: React.FC = () => {
         <h3>The best food this side of the Mississippi</h3>
 
         <p className="description">
-          <img src={restaurant.data.images.owner} alt="" />
+          <img src={restaurant.data.images.owner} alt="Owner's headshot" />
           Description for {restaurant.data.name}
         </p>
         <p className="order-link">
