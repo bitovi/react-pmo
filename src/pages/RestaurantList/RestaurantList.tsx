@@ -71,7 +71,12 @@ const RestaurantList: React.FC = () => {
         ) : restaurants.data ? (
           restaurants.data.map(({ _id, slug, name, address, images }) => (
             <div key={_id} className="restaurant">
-              <img src={images.thumbnail} alt="A restaurant food item" width="100" height="100" />
+              <img
+                src={images.thumbnail}
+                alt="A restaurant food item"
+                width="100"
+                height="100"
+              />
               <h3>{name}</h3>
 
               {address && (
