@@ -6,6 +6,7 @@ const RestaurantDetails: React.FC<{ restaurant: Restaurant }> = ({
   return (
     <div
       className="restaurant-header"
+      title="Restaurant cover picture"
       style={{ backgroundImage: `url(${restaurant.images.banner})` }}
     >
       <div className="background">
