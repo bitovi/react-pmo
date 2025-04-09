@@ -1,6 +1,6 @@
 import type { City, Restaurant, State } from "./interfaces"
 
-import { pmo } from "../api"
+import { pmo } from "@shared/services/pmo"
 
 export async function getRestaurant(slug: string): Promise<Restaurant> {
   const data = await pmo<Restaurant>({
