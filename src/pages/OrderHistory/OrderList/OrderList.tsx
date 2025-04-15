@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-import { Order , statuses, titles } from "@shared/services/pmo"
+import { Order, statuses, titles } from "@shared/services/pmo"
 
 const OrderList: React.FC<{
   title: string

@@ -2,7 +2,6 @@ import { Link, useRouteError } from "react-router-dom"
 
 import { RouteError } from "./interfaces"
 
-
 const NotFound: React.FC = () => {
   const error = useRouteError() as RouteError
   console.error(error)

@@ -1,7 +1,10 @@
 import { useEffect } from "react"
 
 import usePromise, { PromiseState } from "@shared/helpers/usePromise"
-import { City, Restaurant, State ,
+import {
+  City,
+  Restaurant,
+  State,
   getCities,
   getRestaurant,
   getRestaurants,

@@ -2,7 +2,6 @@ import { useCallback, useState } from "react"
 
 import { Order } from "@shared/services/pmo"
 
-
 type NewOrder = Omit<Order, "_id" | "status" | "items" | "restaurant"> & {
   items: Record<string, boolean>
 }

@@ -2,7 +2,6 @@ import { useCallback, useState } from "react"
 
 import { PromiseState } from "./interfaces"
 
-
 export default function usePromise<Data>(): [
   PromiseState<Data>,
   (promise?: Promise<Data>) => void,

@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 
 import usePromise, { PromiseState } from "@shared/helpers/usePromise"
-import { Order , getOrder, getOrders } from "@shared/services/pmo"
+import { Order, getOrder, getOrders } from "@shared/services/pmo"
 
 export function useOrder(id: string): PromiseState<Order> {
   const [promiseState, update] = usePromise<Order>()
