@@ -1,10 +1,7 @@
-import type { PromiseState } from "@shared/helpers/usePromise"
-import type { Order } from "@shared/services/pmo"
-
 import { useEffect } from "react"
 
-import usePromise from "@shared/helpers/usePromise"
-import { getOrder, getOrders } from "@shared/services/pmo"
+import usePromise, { PromiseState } from "@shared/helpers/usePromise"
+import { Order , getOrder, getOrders } from "@shared/services/pmo"
 
 export function useOrder(id: string): PromiseState<Order> {
   const [promiseState, update] = usePromise<Order>()

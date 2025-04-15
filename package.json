@@ -6,6 +6,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "eslint": "eslint vite.config.ts src",
+    "eslint:fix": "eslint --fix .",
     "prettier": "prettier --check vite.config.ts src",
     "depcheck": "depcheck .",
     "start": "vite",
