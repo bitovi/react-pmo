@@ -1,8 +1,6 @@
-import type { Order } from "@shared/services/pmo"
-
 import { useCallback, useState } from "react"
 
-// import usePromise from "@shared/hooks/usePromise"
+import { Order } from "@shared/services/pmo"
 
 type NewOrder = Omit<Order, "_id" | "status" | "items" | "restaurant"> & {
   items: Record<string, boolean>
@@ -32,8 +30,6 @@ export default function useForm(): [
     phone: "",
     items: {},
   })
-
-  // const [promiseState, update] = usePromise<boolean>()
 
   const setValue = useCallback(
     (key: string, value: string) =>

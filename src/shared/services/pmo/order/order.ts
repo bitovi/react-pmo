@@ -1,6 +1,6 @@
-import type { Order } from "./interfaces"
+import { pmo } from "@shared/services/pmo"
 
-import { pmo } from "../api"
+import { Order } from "./interfaces"
 
 export const statuses: Array<Order["status"]> = [
   "new",

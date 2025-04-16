@@ -1,10 +1,10 @@
-import type { PromiseState } from "@shared/helpers/usePromise"
-import type { City, Restaurant, State } from "@shared/services/pmo"
-
 import { useEffect } from "react"
 
-import usePromise from "@shared/helpers/usePromise"
+import usePromise, { PromiseState } from "@shared/helpers/usePromise"
 import {
+  City,
+  Restaurant,
+  State,
   getCities,
   getRestaurant,
   getRestaurants,

@@ -1,4 +1,4 @@
-import type { Restaurant } from "@shared/services/pmo"
+import { Restaurant } from "@shared/services/pmo"
 
 const RestaurantDetails: React.FC<{ restaurant: Restaurant }> = ({
   restaurant,
